@@ -1,0 +1,79 @@
+<!-- \index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speaker Testing Application</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Speaker Testing Application</h1>
+    </header>
+    
+    <main>
+        <section class="speaker-info">
+            <h2>Speaker Information</h2>
+            <div class="form-group">
+                <label for="speaker-model">Speaker Model:</label>
+                <input type="text" id="speaker-model" name="speaker-model" placeholder="Enter speaker model">
+            </div>
+        </section>
+        
+        <section class="tests">
+            <h2>Speaker Tests</h2>
+            
+            <div class="test-card">
+                <h3>Frequency Response Test</h3>
+                <p>Tests how well your speakers reproduce different frequencies.</p>
+                <button onclick="runTest('frequency-response')">Run Test</button>
+                <div id="frequency-response-results" class="results"></div>
+            </div>
+            
+            <div class="test-card">
+                <h3>Distortion Test</h3>
+                <p>Measures audio distortion at high volumes.</p>
+                <button onclick="runTest('distortion')">Run Test</button>
+                <div id="distortion-results" class="results"></div>
+            </div>
+            
+            <div class="test-card">
+                <h3>Bass Response Test</h3>
+                <p>Analyzes how well your speakers handle low frequencies.</p>
+                <button onclick="runTest('bass-response')">Run Test</button>
+                <div id="bass-response-results" class="results"></div>
+            </div>
+        </section>
+        
+        <section class="rating">
+            <h2>Rate Your Speaker</h2>
+            <div class="rating-stars">
+                <span class="star" data-value="1">★</span>
+                <span class="star" data-value="2">★</span>
+                <span class="star" data-value="3">★</span>
+                <span class="star" data-value="4">★</span>
+                <span class="star" data-value="5">★</span>
+                <span id="rating-value">0/5</span>
+            </div>
+            <button id="submit-rating" disabled>Submit Rating</button>
+        </section>
+        
+        <section class="data-export">
+            <h2>Export Test Results</h2>
+            <div class="export-options">
+                <button onclick="exportResults('csv')">Export as CSV</button>
+                <button onclick="exportResults('json')">Export as JSON</button>
+            </div>
+        </section>
+        
+        <section class="analytics">
+            <h2>Analytics</h2>
+            <button onclick="loadAnalytics()">Load Analytics</button>
+            <div id="analytics-results" class="results"></div>
+        </section>
+    </main>
+    
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
